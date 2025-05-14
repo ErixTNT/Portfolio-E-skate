@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resultados Encuesta</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Resultados de la Encuesta</h1>
+  </header>
+
+  <section class="graficos">
+    <h2>Gráficos de las respuestas</h2>
+
+    <canvas id="edadChart"></canvas>
+    <canvas id="vehiculoChart"></canvas>
+    <canvas id="pagoChart"></canvas>
+    <canvas id="expandirChart"></canvas>
+  </section>
+
+  <section class="analisis">
+    <h2>Análisis de los resultados</h2>
+    <p>La encuesta fue respondida por 9 personas, en su mayoría jóvenes entre 15 y 30 años. El 66.7% se moviliza en bicicleta o motocicleta, y todos los encuestados indicaron no haber sido víctimas de robo de vehículos. Sin embargo, el 100% está interesado en poder ver la ubicación de su vehículo a través de una aplicación.</p>
+    <p>En cuanto al precio, más del 44% estaría dispuesto a pagar entre 300 y 500 USD, mostrando que hay interés real en la funcionalidad del sistema. Finalmente, más del 55% cree que este sistema podría aplicarse a todo tipo de vehículos, no solo skates.</p>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Proyecto E-Skate - Resultados</p>
+  </footer>
+
+  <script>
+    const edadChart = new Chart(document.getElementById('edadChart'), {
+      type: 'pie',
+      data: {
+        labels: ['15-18 años', '18-30 años', '85 (error?)'],
+        datasets: [{
+          label: 'Edad',
+          data: [4, 4, 1],
+          backgroundColor: ['#3498db', '#2ecc71', '#e74c3c']
+        }]
+      }
+    });
+
+    const vehiculoChart = new Chart(document.getElementById('vehiculoChart'), {
+      type: 'pie',
+      data: {
+        labels: ['Caminando', 'Bici/Moto', 'Auto propio'],
+        datasets: [{
+          label: 'Vehículo propio',
+          data: [1, 6, 2],
+          backgroundColor: ['#f1c40f', '#9b59b6', '#1abc9c']
+        }]
+      }
+    });
+
+    const pagoChart = new Chart(document.getElementById('pagoChart'), {
+      type: 'pie',
+      data: {
+        labels: ['0-300 USD', '300-500 USD', 'Más de 500'],
+        datasets: [{
+          label: 'Precio aceptable',
+          data: [5, 4, 0],
+          backgroundColor: ['#34495e', '#16a085', '#c0392b']
+        }]
+      }
+    });
+
+    const expandirChart = new Chart(document.getElementById('expandirChart'), {
+      type: 'pie',
+      data: {
+        labels: ['Solo skates', 'Todos los vehículos', 'Lo veo posible'],
+        datasets: [{
+          label: 'Expansión',
+          data: [0, 4, 5],
+          backgroundColor: ['#d35400', '#8e44ad', '#27ae60']
+        }]
+      }
+    });
+  </script>
+</body>
+</html>
+
