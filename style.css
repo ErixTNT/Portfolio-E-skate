@@ -1,50 +1,236 @@
-/* Estilos generales para el portfolio */
+/* Estilos generales para el portfolio, basados en la estética de E-Skate */
+
+/* Importar fuentes */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Quicksand:wght@500;700&display=swap');
+@import url('https://www.transparenttextures.com/patterns/asfalt-dark.png');
+
 
 body {
-    font-family: 'Poppins', sans-serif;
+    background-color: #00719c; /* Fondo de la página */
+    background-image: url('asfalt-dark.png'); /* Textura (asegúrate de tener este archivo o usa la URL completa si es externa) */
+    color: #ffffff; /* Texto blanco por defecto */
+    font-family: 'Montserrat', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f9f9f9;
-    color: #333;
-  }
-  
-  header, footer {
-    background-color: #2c3e50;
-    color: white;
+    /* No padding-top fijo para el portfolio si no tienes header fijo */
+    min-height: 100vh; /* Para el footer sticky si lo implementas */
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    max-width: 960px; /* Ancho máximo del contenido */
+    margin: 0 auto; /* Centrar el contenedor */
+    padding: 0 15px; /* Padding a los lados */
+    width: 100%; /* Asegura que ocupe el ancho disponible */
+}
+
+
+header, footer {
+    background-color: #005f87; /* Color de fondo del encabezado/pie de página */
+    color: #ffffff;
     text-align: center;
-    padding: 1rem;
-  }
-  
-  h1, h2 {
-    color: #2c3e50;
-  }
-  
-  .intro, .formulario, .graficos, .analisis {
-    padding: 2rem;
-    max-width: 960px;
-    margin: auto;
-  }
-  
-  iframe {
-    border: none;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-  }
-  
-  a {
-    color: #2980b9;
+    padding: 1.5rem; /* Ajusta el padding */
+    border-bottom: 3px solid #004b6b; /* Borde similar al header del E-Skate */
+    /* Si el header no es fijo, no necesita box-shadow aquí */
+}
+
+header h1 {
+    color: #ffffff;
+    margin: 0;
+    font-size: 2rem; /* Ajusta el tamaño del título del header */
+    font-family: "Quicksand", sans-serif;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+h2 {
+    color: #ffcc00; /* Color de los subtítulos */
+    text-align: center;
+    margin-bottom: 40px; /* Espacio debajo del subtítulo */
+    font-size: 2.5rem; /* Ajusta el tamaño */
+    position: relative;
+}
+
+/* Línea decorativa bajo h2 */
+h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px; /* Ancho de la línea */
+    height: 3px;
+    background: linear-gradient(90deg, transparent 0%, #ffcc00 50%, transparent 100%);
+}
+
+
+/* Estilos para las secciones de contenido */
+.intro, .models, .graficos, .analisis {
+    padding: 60px 0; /* Padding superior e inferior */
+    /* background-color se puede definir por sección si quieres alternar */
+    position: relative; /* Para posibles pseudo-elementos */
+    flex-shrink: 0; /* Evita que las secciones se encojan en flex body */
+}
+
+.intro {
+    background-color: #005f87; /* Color de fondo para la sección intro */
+    background-image: url('asfalt-dark.png'); /* Textura */
+    border-bottom: 3px solid #004b6b; /* Borde inferior */
+}
+
+.models {
+    background-color: #00719c; /* Color de fondo para la sección models (encuesta) */
+    background-image: url('asfalt-dark.png'); /* Textura */
+    border-bottom: 3px solid #005f87; /* Borde inferior */
+}
+
+.graficos {
+    background-color: #005f87; /* Color de fondo para la sección de gráficos */
+    background-image: url('asfalt-dark.png'); /* Textura */
+    border-bottom: 3px solid #004b6b; /* Borde inferior */
+}
+
+.analisis {
+    background-color: #00719c; /* Color de fondo para la sección de análisis */
+    background-image: url('asfalt-dark.png'); /* Textura */
+    border-bottom: 3px solid #005f87; /* Borde inferior */
+}
+
+
+/* Estilo para los párrafos dentro de las secciones */
+.intro p, .graficos p, .analisis p {
+     text-align: center;
+     font-size: 1.1rem;
+     margin: 0 auto 20px;
+     color: white; /* Texto blanco */
+     max-width: 800px;
+     line-height: 1.8;
+}
+
+
+/* Estilo para el iframe (Google Forms) */
+iframe {
+    border-radius: 15px; /* Bordes redondeados */
+    border: 3px solid #004b6b; /* Borde azul oscuro */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Sombra */
+    margin-top: 20px; /* Espacio arriba del iframe */
+    /* width y height ya están en el HTML inline, pero puedes añadir estilos responsivos aquí si quieres */
+    max-width: 800px; /* Máximo ancho para el iframe */
+    display: block; /* Para centrarlo con margin: auto; */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Estilo para enlaces */
+a {
+    color: #ffcc00; /* Color amarillo para enlaces */
     text-decoration: none;
-  }
-  a:hover {
+    transition: color 0.3s ease;
+}
+a:hover {
+    color: #ffb700; /* Amarillo más oscuro al pasar el ratón */
     text-decoration: underline;
-  }
-  
-  canvas {
-    margin-top: 2rem;
+}
+
+/* Estilo para el botón principal (Ver/Cerrar Encuesta) */
+.btn-main {
+    background-color: #ffcc00;
+    color: #333;
+    padding: 15px 35px;
+    font-size: 1.2rem;
+    border-radius: 50px;
+    border: none;
+    transition: all 0.4s ease;
+    box-shadow: 0 4px 15px rgba(255, 204, 0, 0.3);
+    font-weight: 600;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    display: inline-block; /* Asegura que los paddings y márgenes funcionen */
+    margin-top: 20px; /* Espacio arriba del botón */
+}
+
+.btn-main::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background-color: #ffb700;
+    transition: width 0.4s ease;
+    z-index: -1;
+    border-radius: 50px;
+}
+
+.btn-main:hover {
+    color: #333;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(255, 204, 0, 0.4);
+}
+
+.btn-main:hover::before {
+    width: 100%;
+}
+
+/* Estilo para los gráficos (canvas) */
+canvas {
+    margin-top: 40px; /* Espacio arriba de cada gráfico */
     max-width: 100%;
-  }
-  
-  footer {
-    margin-top: 2rem;
-  }
-  
+    border: 3px solid #004b6b; /* Borde similar al iframe */
+    border-radius: 15px; /* Bordes redondeados */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Sombra */
+    background-color: rgba(255, 255, 255, 0.9); /* Fondo blanco para los gráficos si es necesario */
+    padding: 15px; /* Padding dentro del borde */
+}
+
+/* Footer ajustado para sticky footer */
+footer {
+    margin-top: auto; /* Empuja el footer hacia abajo */
+    flex-shrink: 0; /* Evita que se encoja */
+    border-top: 3px solid #004b6b; /* Borde superior */
+    border-bottom: none; /* No borde inferior en el footer */
+}
+
+/* Media Queries básicas (puedes añadir más según necesites) */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 1.8rem;
+    }
+    h2 {
+        font-size: 2rem;
+        margin-bottom: 30px;
+    }
+    .intro, .models, .graficos, .analisis {
+        padding: 40px 0; /* Reduce padding en secciones */
+    }
+    .btn-main {
+        padding: 12px 25px;
+        font-size: 1rem;
+    }
+     .intro p, .graficos p, .analisis p {
+         font-size: 1rem;
+         max-width: 90%;
+     }
+}
+
+@media (max-width: 576px) {
+    header h1 {
+        font-size: 1.5rem;
+    }
+     h2 {
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+    }
+    .intro, .models, .graficos, .analisis {
+        padding: 30px 0; /* Reduce padding aún más */
+    }
+    .btn-main {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+    .intro p, .graficos p, .analisis p {
+         font-size: 0.9rem;
+     }
+}
